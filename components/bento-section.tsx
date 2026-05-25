@@ -55,9 +55,6 @@ export function BentoSection() {
               <span className="block whitespace-nowrap">いつでもどこでも、</span>
               <span className="block whitespace-nowrap">Paratalkがそばに</span>
             </h2>
-            <p className="w-full max-w-[600px] text-center text-muted-foreground text-lg md:text-xl font-medium leading-relaxed">
-              記録しながら、切り返しを提案。資料も即座に相談。
-            </p>
           </div>
         </div>
         <div className="self-stretch grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-7xl mx-auto z-10">
