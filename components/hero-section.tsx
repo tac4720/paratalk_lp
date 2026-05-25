@@ -5,20 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Header } from "./header"
 import Link from "next/link"
 import { DashboardPreview } from "./dashboard-preview"
-import { useTypewriter } from "@/hooks/use-typewriter"
 
 export function HeroSection() {
-  const line1 = useTypewriter({
-    text: "会議や商談に、",
-    speed: 80,
-    delay: 500,
-  })
-
-  const line2 = useTypewriter({
-    text: "AIパートナーを",
-    speed: 80,
-    delay: 500 + "会議に、".length * 80,
-  })
   return (
     <section
       className="flex flex-col items-center text-center relative mx-auto rounded-2xl overflow-hidden my-6 py-0 px-4
@@ -454,14 +442,8 @@ export function HeroSection() {
 
       <div className="relative z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 max-w-md md:max-w-[500px] lg:max-w-[588px] mt-16 md:mt-[120px] lg:mt-[160px] px-4">
         <h1 className="text-foreground text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight">
-          <span className="block whitespace-nowrap">
-            {line1.displayedText}
-            {!line1.isComplete && <span className="animate-pulse">|</span>}
-          </span>
-          <span className="block whitespace-nowrap">
-            {line2.displayedText}
-            {line1.isComplete && !line2.isComplete && <span className="animate-pulse">|</span>}
-          </span>
+          <span className="block whitespace-nowrap">会議や商談に、</span>
+          <span className="block whitespace-nowrap">AIパートナーを</span>
         </h1>
         <p className="text-muted-foreground text-base md:text-base lg:text-lg font-medium leading-relaxed max-w-lg mx-auto">
           あなたを、記録から解放する。AIが聞き、書き、まとめる。あなたは話すだけ。

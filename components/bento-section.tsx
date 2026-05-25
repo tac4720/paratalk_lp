@@ -1,10 +1,6 @@
 "use client"
 
-import AiCodeReviews from "./bento/ai-code-reviews"
 import OneClickIntegrationsIllustration from "./bento/one-click-integrations-illustration"
-import AiChat from "./bento/ai-chat"
-import { useTypewriter } from "@/hooks/use-typewriter"
-import { useInView } from "@/hooks/use-in-view"
 
 const BentoCard = ({ title, description, Component, isLarge, isSmall }) => (
   <div className={`overflow-hidden rounded-2xl border border-white/20 flex flex-col justify-start items-start relative ${isLarge ? "lg:col-span-2" : ""}`}>
@@ -39,37 +35,7 @@ const BentoCard = ({ title, description, Component, isLarge, isSmall }) => (
 )
 
 export function BentoSection() {
-  const { ref, isInView } = useInView({ threshold: 0.3 })
-  
-  const line1 = useTypewriter({
-    text: "いつでもどこでも、",
-    speed: 80,
-    delay: 500,
-    start: isInView,
-  })
-
-  const line2 = useTypewriter({
-    text: "Paratalkがそばに",
-    speed: 80,
-    delay: 500 + "会議中も、".length * 80,
-    start: isInView,
-  })
-
   const cards = [
-    {
-      title: "あらかじめ用意した切り返しを即座に引用",
-      description:
-        "会話内容をリアルタイムでembedding類似度が高い発言に適した切り返しを、設定ファイルから引用します。",
-      Component: AiCodeReviews,
-      isSmall: true,
-    },
-    {
-      title: "いつでもどこでもAIにChatできる",
-      description:
-        "画面に映っている内容や録音している音声はAIに渡されます。パソコンを開いているとき、いつでもParatalkが隣にいます。",
-      Component: AiChat,
-      isSmall: true,
-    },
     {
       title: "ワンクリックで過去の会議を再生",
       description:
@@ -85,18 +51,12 @@ export function BentoSection() {
         <div className="w-[547px] h-[938px] absolute top-[614px] left-[80px] origin-top-left rotate-[-33.39deg] bg-primary/10 blur-[130px] z-0" />
         <div className="self-stretch py-8 md:py-14 flex flex-col justify-center items-center gap-2 z-10">
           <div className="flex flex-col justify-start items-center gap-4">
-            <h2 ref={ref} className="w-full max-w-[655px] text-center text-foreground text-4xl md:text-6xl font-semibold leading-tight md:leading-[66px]">
-              <span className="block whitespace-nowrap">
-                {line1.displayedText}
-                {!line1.isComplete && <span className="animate-pulse">|</span>}
-              </span>
-              <span className="block whitespace-nowrap">
-                {line2.displayedText}
-                {line1.isComplete && !line2.isComplete && <span className="animate-pulse">|</span>}
-              </span>
+            <h2 className="w-full max-w-[655px] text-center text-foreground text-4xl md:text-6xl font-semibold leading-tight md:leading-[66px]">
+              <span className="block whitespace-nowrap">いつでもどこでも、</span>
+              <span className="block whitespace-nowrap">Paratalkがそばに</span>
             </h2>
             <p className="w-full max-w-[600px] text-center text-muted-foreground text-lg md:text-xl font-medium leading-relaxed">
-              記録しながら、切り返しを提案。資料も即座に相談。AIがリアルタイムであなたを支えます。
+              記録しながら、切り返しを提案。資料も即座に相談。
             </p>
           </div>
         </div>
