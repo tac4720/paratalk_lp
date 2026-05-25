@@ -3,7 +3,6 @@
 import React from "react"
 import { Button } from "@/components/ui/button"
 import { Header } from "./header"
-import Link from "next/link"
 import { DashboardPreview } from "./dashboard-preview"
 
 export function HeroSection() {
@@ -440,25 +439,26 @@ export function HeroSection() {
         <Header />
       </div>
 
-      <div className="relative z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 max-w-md md:max-w-[500px] lg:max-w-[588px] mt-16 md:mt-[120px] lg:mt-[160px] px-4">
-        <h1 className="text-foreground text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight">
-          <span className="block whitespace-nowrap">会議や商談に、</span>
-          <span className="block whitespace-nowrap">AIパートナーを</span>
-        </h1>
-        <p className="text-muted-foreground text-base md:text-base lg:text-lg font-medium leading-relaxed max-w-lg mx-auto">
-          あなたを、記録から解放する。AIが聞き、書き、まとめる。あなたは話すだけ。
-        </p>
-      </div>
-
-      <a href="/Paratalk-0.1.0-win.exe" download>
-        <Button className="relative z-10 bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-3 rounded-full font-medium text-base shadow-lg ring-1 ring-white/10">
-          無料でダウンロード (Windows)
-        </Button>
-      </a>
-
-      {/* Dashboard Preview directly below the download button */}
-      <div className="relative z-10 mt-12 md:mt-16">
-        <DashboardPreview />
+      <div className="relative z-10 mt-20 md:mt-[108px] lg:mt-[132px] w-full px-0 md:px-6">
+        <DashboardPreview>
+          <div className="pointer-events-none absolute inset-2 rounded-xl bg-[linear-gradient(180deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.68)_42%,rgba(15,18,17,0.18)_78%),linear-gradient(90deg,rgba(15,18,17,0.88)_0%,rgba(15,18,17,0.42)_48%,rgba(15,18,17,0.06)_100%)] md:bg-[linear-gradient(90deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.74)_34%,rgba(15,18,17,0.2)_64%,rgba(15,18,17,0.03)_100%)]" />
+          <div className="absolute inset-2 flex items-start md:items-center rounded-xl px-5 py-7 text-left md:px-10 lg:px-14">
+            <div className="max-w-[520px] space-y-4 md:space-y-5">
+              <h1 className="text-foreground text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
+                <span className="block">会議や商談に、</span>
+                <span className="block">AIパートナーを</span>
+              </h1>
+              <p className="max-w-[460px] text-sm md:text-base lg:text-lg font-medium leading-relaxed text-foreground/82 drop-shadow-[0_1px_12px_rgba(0,0,0,0.65)]">
+                あなたを、記録から解放する。AIが聞き、書き、まとめる。あなたは話すだけ。
+              </p>
+              <a href="/Paratalk-0.1.0-win.exe" download className="pointer-events-auto inline-flex">
+                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-base shadow-lg ring-1 ring-white/10">
+                  無料でダウンロード (Windows)
+                </Button>
+              </a>
+            </div>
+          </div>
+        </DashboardPreview>
       </div>
     </section>
   )
