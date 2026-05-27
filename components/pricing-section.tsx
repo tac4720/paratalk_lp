@@ -1,181 +1,189 @@
 "use client"
 
-import { useState } from "react"
 import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
+
+type Plan = {
+  name: string
+  price: string
+  priceSuffix?: string
+  highlight: string
+  description: string
+  features: string[]
+  popular?: boolean
+}
+
+const PAID_FEATURES = [
+  "高精度クラウドAI",
+  "リアルタイム文字起こし",
+  "リアルタイム要約",
+  "会議中チャット",
+]
+
+const plans: Plan[] = [
+  {
+    name: "Free",
+    price: "¥0",
+    highlight: "ローカルのみ",
+    description: "ローカルだけで完結。プライバシー重視のあなたへ。",
+    features: [
+      "ローカルAIモデル(オフライン動作)",
+      "ローカル文字起こし",
+      "議事録・サマリー自動生成",
+      "履歴をローカルに保存",
+    ],
+  },
+  {
+    name: "Starter",
+    price: "¥980",
+    priceSuffix: "/月",
+    highlight: "月 30,000 クレジット",
+    description: "クラウドAIをライトに使いたい個人向け。",
+    features: PAID_FEATURES,
+  },
+  {
+    name: "Standard",
+    price: "¥1,980",
+    priceSuffix: "/月",
+    highlight: "月 75,000 クレジット",
+    description: "毎日の会議や商談で使う標準プラン。",
+    features: PAID_FEATURES,
+    popular: true,
+  },
+  {
+    name: "Pro",
+    price: "¥4,980",
+    priceSuffix: "/月",
+    highlight: "月 180,000 クレジット",
+    description: "長時間・ヘビーユース向け。",
+    features: PAID_FEATURES,
+  },
+]
 
 export function PricingSection() {
-  const [isAnnual, setIsAnnual] = useState(true)
-
-  const pricingPlans = [
-    {
-      name: "Free",
-      monthlyPrice: "$0",
-      annualPrice: "$0",
-      description: "試しに使ってみたいあなたへ",
-      features: ["回数制限付きの基本機能"],
-      buttonText: "無料で始める",
-      buttonClass:
-        "bg-zinc-300 shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] outline outline-0.5 outline-[#1e29391f] outline-offset-[-0.5px] text-gray-800 text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-zinc-400",
-    },
-    {
-      name: "Enterprise",
-      monthlyPrice: "$200",
-      annualPrice: "$160",
-      description: "チーム・企業向けプラン",
-      features: ["追加機能要望", "カスタマイズ", "サポート"],
-      buttonText: "営業に相談",
-      buttonClass:
-        "bg-secondary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] text-secondary-foreground text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-secondary/90",
-    },
-  ]
-
   return (
     <section className="w-full px-5 overflow-hidden flex flex-col justify-start items-center my-0 py-8 md:py-14">
-      <div className="self-stretch relative flex flex-col justify-center items-center gap-2 py-0">
-        <div className="flex flex-col justify-start items-center gap-4">
-          <h2 className="text-center text-foreground text-4xl md:text-5xl font-semibold leading-tight md:leading-[40px]">
-            シンプルで明快な料金プラン
-          </h2>
-          <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-tight">
-            個人からチームまで、あなたのニーズに合わせたプランをお選びください
-          </p>
-        </div>
-        <div className="pt-4">
-          <div className="p-0.5 bg-muted rounded-lg outline outline-1 outline-[#0307120a] outline-offset-[-1px] flex justify-start items-center gap-1 md:mt-0">
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`pl-2 pr-1 py-1 flex justify-start items-start gap-2 rounded-md ${isAnnual ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
-            >
-              <span
-                className={`text-center text-sm font-medium leading-tight ${isAnnual ? "text-accent-foreground" : "text-zinc-400"}`}
-              >
-                Annually
-              </span>
-            </button>
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-2 py-1 flex justify-start items-start rounded-md ${!isAnnual ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
-            >
-              <span
-                className={`text-center text-sm font-medium leading-tight ${!isAnnual ? "text-accent-foreground" : "text-zinc-400"}`}
-              >
-                Monthly
-              </span>
-            </button>
-          </div>
-        </div>
+      <div className="self-stretch flex flex-col items-center gap-3 text-center">
+        <h2 className="text-foreground text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
+          シンプルで明快な料金プラン
+        </h2>
+        <p className="max-w-[640px] text-muted-foreground text-sm md:text-base font-medium leading-relaxed">
+          無料のローカルモードと、月額のクラウドモード。
+          <br className="hidden md:block" />
+          いつでも解約でき、足りないときは追加クレジットで補充できます。
+        </p>
       </div>
-      <div className="self-stretch px-5 flex flex-col md:flex-row justify-start items-start gap-4 md:gap-6 mt-6 max-w-[1100px] mx-auto">
-        {pricingPlans.map((plan) => (
-          <div
-            key={plan.name}
-            className={`flex-1 p-4 overflow-hidden rounded-xl flex flex-col justify-start items-start gap-6 ${plan.popular ? "bg-primary shadow-[0px_4px_8px_-2px_rgba(0,0,0,0.10)]" : "bg-gradient-to-b from-gray-50/5 to-gray-50/0"}`}
-            style={plan.popular ? {} : { outline: "1px solid hsl(var(--border))", outlineOffset: "-1px" }}
-          >
-            <div className="self-stretch flex flex-col justify-start items-start gap-6">
-              <div className="self-stretch flex flex-col justify-start items-start gap-8">
-                <div
-                  className={`w-full h-5 text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground" : "text-zinc-200"}`}
-                >
-                  {plan.name}
-                  {plan.popular && (
-                    <div className="ml-2 px-2 overflow-hidden rounded-full justify-center items-center gap-2.5 inline-flex mt-0 py-0.5 bg-gradient-to-b from-primary-light/50 to-primary-light bg-white">
-                      <div className="text-center text-primary-foreground text-xs font-normal leading-tight break-words">
-                        Popular
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div className="self-stretch flex flex-col justify-start items-start gap-1">
-                  <div className="flex justify-start items-center gap-1.5">
-                    <div
-                      className={`relative h-10 flex items-center text-3xl font-medium leading-10 ${plan.popular ? "text-primary-foreground" : "text-zinc-50"}`}
-                    >
-                      {plan.name === "Enterprise" ? (
-                        <span>$相談</span>
-                      ) : (
-                        <>
-                          <span className="invisible">{isAnnual ? plan.annualPrice : plan.monthlyPrice}</span>
-                          <span
-                            className="absolute inset-0 flex items-center transition-all duration-500"
-                            style={{
-                              opacity: isAnnual ? 1 : 0,
-                              transform: `scale(${isAnnual ? 1 : 0.8})`,
-                              filter: `blur(${isAnnual ? 0 : 4}px)`,
-                            }}
-                            aria-hidden={!isAnnual}
-                          >
-                            {plan.annualPrice}
-                          </span>
-                          <span
-                            className="absolute inset-0 flex items-center transition-all duration-500"
-                            style={{
-                              opacity: !isAnnual ? 1 : 0,
-                              transform: `scale(${!isAnnual ? 1 : 0.8})`,
-                              filter: `blur(${!isAnnual ? 0 : 4}px)`,
-                            }}
-                            aria-hidden={isAnnual}
-                          >
-                            {plan.monthlyPrice}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    {plan.name !== "Enterprise" && (
-                      <div
-                        className={`text-center text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-zinc-400"}`}
-                      >
-                        /month
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    className={`self-stretch text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-zinc-400"}`}
-                  >
-                    {plan.description}
-                  </div>
-                </div>
-              </div>
-              <Button
-                className={`self-stretch px-5 py-2 rounded-[40px] flex justify-center items-center ${plan.buttonClass}`}
-              >
-                <div className="px-1.5 flex justify-center items-center gap-2">
-                  <span
-                    className={`text-center text-sm font-medium leading-tight ${plan.name === "Free" ? "text-gray-800" : "text-zinc-950"}`}
-                  >
-                    {plan.buttonText}
-                  </span>
-                </div>
-              </Button>
-            </div>
-            <div className="self-stretch flex flex-col justify-start items-start gap-4">
-              <div
-                className={`self-stretch text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}
-              >
-                {plan.name === "Free" ? "Get Started today:" : "Everything in Free +"}
-              </div>
-              <div className="self-stretch flex flex-col justify-start items-start gap-3">
-                {plan.features.map((feature) => (
-                  <div key={feature} className="self-stretch flex justify-start items-center gap-2">
-                    <div className="w-4 h-4 flex items-center justify-center">
-                      <Check
-                        className={`w-full h-full ${plan.popular ? "text-primary-foreground" : "text-muted-foreground"}`}
-                        strokeWidth={2}
-                      />
-                    </div>
-                    <div
-                      className={`leading-tight font-normal text-sm text-left ${plan.popular ? "text-primary-foreground" : "text-muted-foreground"}`}
-                    >
-                      {feature}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+
+      <div className="w-full max-w-[1180px] mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        {plans.map((plan) => (
+          <PricingCard key={plan.name} plan={plan} />
         ))}
       </div>
+
+      <div className="mt-8 md:mt-10 w-full max-w-[1180px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-2xl border border-border/70 bg-card/40 px-5 md:px-7 py-5">
+        <div className="flex-1">
+          <p className="text-foreground text-sm md:text-base font-medium">
+            追加クレジット(繰越可)
+          </p>
+          <p className="mt-1 text-muted-foreground text-xs md:text-sm leading-relaxed">
+            クレジットが足りなくなったらいつでも追加購入できます。
+            <span className="whitespace-nowrap">15,000 ¥500</span> /{" "}
+            <span className="whitespace-nowrap">66,000 ¥2,000</span> /{" "}
+            <span className="whitespace-nowrap">180,000 ¥5,000</span>(税込)。
+          </p>
+        </div>
+        <div className="text-muted-foreground text-xs md:text-sm">
+          法人/チーム導入のご相談は{" "}
+          <a href="/contact" className="text-foreground underline underline-offset-2 hover:text-primary">
+            お問い合わせ
+          </a>{" "}
+          まで
+        </div>
+      </div>
+
+      <p className="mt-6 text-muted-foreground text-xs">
+        表示価格はすべて税込です。決済は Stripe を利用します。
+      </p>
     </section>
+  )
+}
+
+function PricingCard({ plan }: { plan: Plan }) {
+  const isPopular = !!plan.popular
+  return (
+    <div
+      className={`relative flex flex-col rounded-2xl p-5 md:p-6 gap-6 ${
+        isPopular
+          ? "bg-primary text-primary-foreground shadow-[0_8px_32px_-8px_rgba(120,252,214,0.45)]"
+          : "bg-gradient-to-b from-foreground/[0.06] to-transparent border border-border"
+      }`}
+    >
+      {isPopular && (
+        <span className="absolute -top-2.5 right-5 px-2.5 py-0.5 rounded-full bg-foreground text-primary-foreground text-[11px] font-semibold tracking-wide">
+          Popular
+        </span>
+      )}
+
+      <div className="flex flex-col gap-4">
+        <div
+          className={`text-sm font-medium ${
+            isPopular ? "text-primary-foreground/90" : "text-foreground/90"
+          }`}
+        >
+          {plan.name}
+        </div>
+        <div className="flex items-baseline gap-1">
+          <span className="text-3xl md:text-4xl font-semibold tracking-tight">{plan.price}</span>
+          {plan.priceSuffix && (
+            <span
+              className={`text-sm font-medium ${
+                isPopular ? "text-primary-foreground/70" : "text-muted-foreground"
+              }`}
+            >
+              {plan.priceSuffix}
+            </span>
+          )}
+        </div>
+        <div
+          className={`text-sm font-semibold tracking-tight ${
+            isPopular ? "text-primary-foreground" : "text-foreground"
+          }`}
+        >
+          {plan.highlight}
+        </div>
+        <p
+          className={`text-sm leading-relaxed ${
+            isPopular ? "text-primary-foreground/80" : "text-muted-foreground"
+          }`}
+        >
+          {plan.description}
+        </p>
+      </div>
+
+      <div
+        className={`h-px w-full ${
+          isPopular ? "bg-primary-foreground/20" : "bg-border"
+        }`}
+      />
+
+      <ul className="flex flex-col gap-2.5">
+        {plan.features.map((feature) => (
+          <li key={feature} className="flex items-start gap-2 text-sm">
+            <Check
+              className={`mt-0.5 h-4 w-4 shrink-0 ${
+                isPopular ? "text-primary-foreground" : "text-foreground/70"
+              }`}
+              strokeWidth={2.5}
+            />
+            <span
+              className={`leading-snug ${
+                isPopular ? "text-primary-foreground/90" : "text-foreground/85"
+              }`}
+            >
+              {feature}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

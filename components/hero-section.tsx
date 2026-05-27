@@ -442,16 +442,16 @@ export function HeroSection() {
       <div className="relative z-10 mt-20 md:mt-[108px] lg:mt-[132px] w-full px-0 md:px-6">
         <DashboardPreview>
           <div className="pointer-events-none absolute inset-2 rounded-xl bg-[linear-gradient(180deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.68)_42%,rgba(15,18,17,0.18)_78%),linear-gradient(90deg,rgba(15,18,17,0.88)_0%,rgba(15,18,17,0.42)_48%,rgba(15,18,17,0.06)_100%)] md:bg-[linear-gradient(90deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.74)_34%,rgba(15,18,17,0.2)_64%,rgba(15,18,17,0.03)_100%)]" />
-          <div className="absolute inset-2 flex items-start md:items-center rounded-xl px-5 py-7 text-left md:px-10 lg:px-14">
-            <div className="max-w-[520px] space-y-4 md:space-y-5">
-              <h1 className="text-foreground text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
-                <span className="block">会議や商談に、</span>
-                <span className="block">AIパートナーを</span>
+          <div className="absolute inset-2 flex items-start md:items-center rounded-xl px-5 py-8 text-left md:px-10 lg:px-14">
+            <div className="max-w-[800px]">
+              <h1 className="text-foreground text-[2rem] md:text-5xl lg:text-6xl font-semibold leading-[1.15] drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
+                <span className="block whitespace-nowrap">無料のローカルモデルで</span>
+                <span className="block whitespace-nowrap">議事録、文字起こし使い放題</span>
               </h1>
-              <p className="max-w-[460px] text-sm md:text-base lg:text-lg font-medium leading-relaxed text-foreground/82 drop-shadow-[0_1px_12px_rgba(0,0,0,0.65)]">
-                あなたを、記録から解放する。AIが聞き、書き、まとめる。あなたは話すだけ。
+              <p className="mt-4 md:mt-5 max-w-[520px] text-sm md:text-base lg:text-lg font-medium leading-relaxed text-foreground/80 drop-shadow-[0_1px_12px_rgba(0,0,0,0.65)]">
+                有料プランに加入すれば、高精度なクラウドモデルでリアルタイム処理も。
               </p>
-              <a href="/Paratalk-0.1.0-win.exe" download className="pointer-events-auto inline-flex">
+              <a href="/Paratalk-0.1.0-win.exe" download className="pointer-events-auto inline-flex mt-7 md:mt-8">
                 <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-base shadow-lg ring-1 ring-white/10">
                   無料でダウンロード (Windows)
                 </Button>
