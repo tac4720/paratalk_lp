@@ -451,7 +451,7 @@ export function HeroSection() {
               <p className="mt-4 md:mt-5 max-w-[520px] text-sm md:text-base lg:text-lg font-medium leading-relaxed text-foreground/80 drop-shadow-[0_1px_12px_rgba(0,0,0,0.65)]">
                 有料プランに加入すれば、高精度なクラウドモデルでリアルタイム処理も。
               </p>
-              <a href="/Paratalk-0.1.0-win.exe" download className="pointer-events-auto inline-flex mt-7 md:mt-8">
+              <a href="https://github.com/tac4720/paratalk_lp/releases/download/v0.1.0/Paratalk-0.1.0-win.exe" download className="pointer-events-auto inline-flex mt-7 md:mt-8">
                 <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-base shadow-lg ring-1 ring-white/10">
                   無料でダウンロード (Windows)
                 </Button>
