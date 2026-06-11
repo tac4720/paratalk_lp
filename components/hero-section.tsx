@@ -444,9 +444,9 @@ export function HeroSection() {
           <div className="pointer-events-none absolute inset-2 rounded-xl bg-[linear-gradient(180deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.68)_42%,rgba(15,18,17,0.18)_78%),linear-gradient(90deg,rgba(15,18,17,0.88)_0%,rgba(15,18,17,0.42)_48%,rgba(15,18,17,0.06)_100%)] md:bg-[linear-gradient(90deg,rgba(15,18,17,0.92)_0%,rgba(15,18,17,0.74)_34%,rgba(15,18,17,0.2)_64%,rgba(15,18,17,0.03)_100%)]" />
           <div className="absolute inset-2 flex items-start md:items-center rounded-xl px-5 py-8 text-left md:px-10 lg:px-14">
             <div className="max-w-[800px]">
-              <h1 className="text-foreground text-[2rem] md:text-5xl lg:text-6xl font-semibold leading-[1.15] drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
-                <span className="block whitespace-nowrap">無料のローカルモデルで</span>
-                <span className="block whitespace-nowrap">議事録、文字起こし使い放題</span>
+              <h1 className="text-foreground text-xl md:text-5xl lg:text-6xl font-semibold leading-[1.15] drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
+                <span className="block md:whitespace-nowrap">無料のローカルモデルで</span>
+                <span className="block md:whitespace-nowrap">議事録、文字起こし使い放題</span>
               </h1>
               <p className="mt-4 md:mt-5 max-w-[520px] text-sm md:text-base lg:text-lg font-medium leading-relaxed text-foreground/80 drop-shadow-[0_1px_12px_rgba(0,0,0,0.65)]">
                 有料プランに加入すれば、高精度なクラウドモデルでリアルタイム処理も。
